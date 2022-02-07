@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import Image from 'next/image'
+
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
-import {useRouter} from 'next/router'
+import AppLayout from '../components/AppLayout'
+
 
 export default function Home() {
-  const router = useRouter()
+
   return (
     <div>
       <Head>
@@ -14,32 +14,13 @@ export default function Home() {
         <link rel="icon" href="/favicon_bird.ico" />
       </Head>
 
-      <main >
+      <AppLayout >
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org" target='_blank'>Next.js!</a>
+          Devter
         </h1>
-        <nav>
-          <Link href='/timeline'>
-            <a>
-              timeline
-            </a>
-          </Link>
-        </nav>
 
-      </main>
-      <style jsx>
-        {`
-          h1{
-            text-align: center;
-            font-size: 48px;
-          }
+      </AppLayout>
 
-          a {
-            color: #09f;
-            text-decoration: none;
-          }
-        `}
-      </style>
      
     </div>
   )
