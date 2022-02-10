@@ -3,6 +3,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import AppLayout from '../components/AppLayout'
 import { colors } from '../styles/theme'
+import Button from '../components/Button'
 
 
 export default function Home() {
@@ -16,12 +17,16 @@ export default function Home() {
       </Head>
 
       <AppLayout >
-        <img src='/devter_logo.png' alt='logo' />
-        <h1 className={styles.title}>
-          Devter
-        </h1>
-        <h2>Talk about development with developers </h2>
-
+        <section>
+          <img src='/devter_logo.png' alt='logo' />
+          <h1 className={styles.title}>
+            Devter
+          </h1>
+          <h2>Talk about development with developers </h2>
+          <div>
+            <Button>Login With Github</Button>
+          </div>
+        </section>
       </AppLayout>
       <style jsx>{`
           img{
@@ -29,11 +34,22 @@ export default function Home() {
           }
           h1{
             color: ${colors.primary};
-            font-size: 3rem;
+            font-weight:800;
+            margin-bottom: 16px;
           }
           h2{
             color: ${colors.secondary};
-            font-size: 2rem;
+            font-size: 21px;
+            margin: 0;
+          }
+          div{
+            margin-top: 8px;
+          }
+          section{
+            display:grid;
+            height: 100%;
+            place-content: center;
+            place-items: center;
           }
         `}</style>
      
