@@ -4,7 +4,7 @@ export const fonts = {
 
 export const colors = {
   primary: '#0099ff',
-  secondary: '1c5480'
+  secondary: '#1c5480'
 }
 
 export const breakpoints = {

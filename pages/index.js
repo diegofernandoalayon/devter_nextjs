@@ -2,6 +2,7 @@ import Head from 'next/head'
 
 import styles from '../styles/Home.module.css'
 import AppLayout from '../components/AppLayout'
+import { colors } from '../styles/theme'
 
 
 export default function Home() {
@@ -15,12 +16,26 @@ export default function Home() {
       </Head>
 
       <AppLayout >
+        <img src='/devter_logo.png' alt='logo' />
         <h1 className={styles.title}>
           Devter
         </h1>
+        <h2>Talk about development with developers </h2>
 
       </AppLayout>
-
+      <style jsx>{`
+          img{
+            width: 120px;
+          }
+          h1{
+            color: ${colors.primary};
+            font-size: 3rem;
+          }
+          h2{
+            color: ${colors.secondary};
+            font-size: 2rem;
+          }
+        `}</style>
      
     </div>
   )
