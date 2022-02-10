@@ -7,6 +7,8 @@ export default function Button({children, onClick}){
       <button onClick={onClick}>{children}</button>   
       <style jsx>{`
           button{
+            display:flex;
+            aling-items: center;
             background: ${colors.black};
             border: 0;
             color: ${colors.white};

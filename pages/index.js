@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import AppLayout from '../components/AppLayout'
 import { colors } from '../styles/theme'
 import Button from '../components/Button'
+import Github from '../components/Icons/Github'
 
 
 export default function Home() {
@@ -24,7 +25,10 @@ export default function Home() {
           </h1>
           <h2>Talk about development with developers </h2>
           <div>
-            <Button>Login With Github</Button>
+            <Button>
+              <Github fill='white' width={24} height={24}/>
+              Login With Github
+            </Button>
           </div>
         </section>
       </AppLayout>
