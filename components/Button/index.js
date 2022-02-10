@@ -18,6 +18,9 @@ export default function Button({children, onClick}){
             curson: pointer;
             transition: opacity: .3s ease;
           }
+          button > :global(svg){
+            margin-right: 8px;
+          }
           button:hover{
             opacity: .8;
           }
