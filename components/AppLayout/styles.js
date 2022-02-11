@@ -1,11 +1,10 @@
 import css from 'styled-jsx/css'
 import {colors, breakpoints} from '../../styles/theme'
 import { addOpacityToColor } from '../../styles/utils'
-const backgroundColor = addOpacityToColor(colors.primary,0.2)
+const backgroundColor = addOpacityToColor(colors.primary,0.1)
 export const globlaStyles = css.global`
-  html,
   body {
-    background-image: radial-gradient( ${backgroundColor} 1px, transparent 1px), radial-gradient(${backgroundColor} 1px, transparent 1px) ;
+    background-image: radial-gradient( ${backgroundColor} 2px, transparent 1px), radial-gradient(${backgroundColor} 2px, transparent 1px) ;
     background-position: 0 0, 25px 25px;
     background-size: 50px 50px;
   }
