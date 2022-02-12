@@ -1,4 +1,11 @@
-import * as firebase from 'firebase'
+// import firebase from 'firebase/app'
+import { initializeApp } from 'firebase/app';
+// import {auth} from 'firebase/app'
+import {getAuth, GithubAuthProvider, signInWithPopup} from 'firebase/auth'
+// import { signInWithPopup } from 'firebase/auth';
+// import { signInWithPhoneNumber } from 'firebase/auth';
+// import auth from 'firebase/auth'
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyC_9T3SJj6TFzh52f0j9pXI7WPNeb0gAmE",
@@ -10,9 +17,11 @@ const firebaseConfig = {
   measurementId: "G-JXMZMQSE3H"
 };
 
-firebase.initializeApp(firebaseConfig)
+
+initializeApp(firebaseConfig)
+const auth = getAuth()
 
 export const loginWithGithub = () => {
-  const githubProvider = new firebase.auth.GithubAuthProvider()
-  return firebase.auth().singInWithPopup(githubProvider)
+  const githubProvider = new GithubAuthProvider()
+  return signInWithPopup(auth,githubProvider)
 }
