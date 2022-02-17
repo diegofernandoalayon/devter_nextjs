@@ -24,4 +24,14 @@ const auth = getAuth()
 export const loginWithGithub = () => {
   const githubProvider = new GithubAuthProvider()
   return signInWithPopup(auth,githubProvider)
+    .then(res => {
+      const {user} = res
+      const {reloadUserInfo} = user
+      const {screenName, photoUrl} = reloadUserInfo
+      return {
+        avatar: photoUrl,
+        username: screenName
+
+      }
+    })
 }
