@@ -14,7 +14,6 @@ export default function Home() {
     loginWithGithub().then(user => {
       const {avatar, username} = user
       setUser(user)
-      console.log(user)
     }).catch(err => {
       console.error(err)
     })
@@ -35,10 +34,13 @@ export default function Home() {
           </h1>
           <h2>Talk about development with developers </h2>
           <div>
-            <Button onClick={handleClick}>
-              <Github fill='white' width={24} height={24}/>
-              Login With Github
-            </Button>
+            {
+              user === null && <Button onClick={handleClick}>
+                                  <Github fill='white' width={24} height={24}/>
+                                  Login With Github
+                              </Button>
+            }
+            
           </div>
         </section>
       </AppLayout>
