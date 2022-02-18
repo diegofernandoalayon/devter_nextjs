@@ -9,7 +9,7 @@ import {loginWithGithub, onAuthStateChangedfun} from '../firebase/client'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(undefined)
 
   useEffect(() =>{
     onAuthStateChangedfun(setUser)
@@ -40,14 +40,18 @@ export default function Home() {
           <h2>Talk about development with developers </h2>
           <div>
             {
-              user === null 
-              ? <Button onClick={handleClick}>
+              user === null && 
+                <Button onClick={handleClick}>
                   <Github fill='white' width={24} height={24}/>
                   Login With Github
                 </Button>
-              : <div>
+            }
+            {
+              user && user.avatar &&
+                <div>
                   <img src={user.avatar} />
                   <strong>{user.username}</strong>
+                  <Button onClick={()=> setUser(null)}>Logout</Button>
                 </div>
             }
             
