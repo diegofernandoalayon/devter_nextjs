@@ -51,9 +51,13 @@ export default function Home () {
             {
               user && user.avatar &&
                 <div>
-                  <Avatar src={user.avatar} alt='no hola' width='100px' />
-                  <img src={user.avatar} />
-                  <strong>{user.username}</strong>
+                  <Avatar
+                    src={user.avatar}
+                    alt={user.username}
+                    width='100px'
+                    text={user.username}
+                    withText
+                  />
                   <Button onClick={() => setUser(null)}>Logout</Button>
                 </div>
             }

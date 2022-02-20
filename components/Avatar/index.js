@@ -1,13 +1,9 @@
-export default function Avatar ({ src, alt = 'image', width = '120px' }) {
+import styles from './styles.module.css'
+export default function Avatar ({ src, alt = 'image', width = '120px', text, withText }) {
   return (
-    <>
-      <img src={src} alt={alt}/>
-      <style jsx>{`
-        img {
-          border-radius: 100%;
-          width: ${width};
-        }
-      `}</style>
-    </>
+    <div className={styles.container}>
+      <img className={styles.avatar} src={src} alt={alt}/>
+      { withText && <strong>{text || alt}</strong> }
+    </div>
   )
 }
