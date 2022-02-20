@@ -1,30 +1,29 @@
 import Head from 'next/head'
-
+import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import AppLayout from '../components/AppLayout'
 import { colors } from '../styles/theme'
 import Button from '../components/Button'
 import Github from '../components/Icons/Github'
-import {loginWithGithub, onAuthStateChangedfun} from '../firebase/client'
-import { useEffect, useState } from 'react'
+import { loginWithGithub, onAuthStateChangedfun } from '../firebase/client'
 import Avatar from '../components/Avatar'
 
-export default function Home() {
+export default function Home () {
   const [user, setUser] = useState(undefined)
 
-  useEffect(() =>{
+  useEffect(() => {
     onAuthStateChangedfun(setUser)
-  },[])
+  }, [])
 
   const handleClick = () => {
     loginWithGithub()
       .then(user => {
-      const {avatar, username} = user
-      setUser(user)
-    })
-    .catch(err => {
-      console.error(err)
-    })
+        // const { avatar, username } = user
+        setUser(user)
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }
   return (
     <div>
@@ -43,7 +42,7 @@ export default function Home() {
           <h2>Talk about development with developers </h2>
           <div>
             {
-              user === null && 
+              user === null &&
                 <Button onClick={handleClick}>
                   <Github fill='white' width={24} height={24}/>
                   Login With Github
@@ -55,10 +54,10 @@ export default function Home() {
                   <Avatar src={user.avatar} alt='no hola' width='100px' />
                   <img src={user.avatar} />
                   <strong>{user.username}</strong>
-                  <Button onClick={()=> setUser(null)}>Logout</Button>
+                  <Button onClick={() => setUser(null)}>Logout</Button>
                 </div>
             }
-            
+
           </div>
         </section>
       </AppLayout>
@@ -86,7 +85,7 @@ export default function Home() {
             place-items: center;
           }
         `}</style>
-     
+
     </div>
   )
 }

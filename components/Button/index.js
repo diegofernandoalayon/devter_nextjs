@@ -1,10 +1,9 @@
-import { colors } from "../../styles/theme";
+import { colors } from '../../styles/theme'
 
-export default function Button({children, onClick}){
-
-  return(
+export default function Button ({ children, onClick }) {
+  return (
    <>
-      <button onClick={onClick}>{children}</button>   
+      <button onClick={onClick}>{children}</button>
       <style jsx>{`
           button{
             display:flex;
@@ -25,6 +24,6 @@ export default function Button({children, onClick}){
             opacity: .8;
           }
         `}</style>
-   </> 
+   </>
   )
 }

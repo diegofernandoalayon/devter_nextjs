@@ -1,7 +1,6 @@
 
-
-import styles, {globlaStyles} from './styles'
-export default function AppLayout({children})  {
+import styles, { globlaStyles } from './styles'
+export default function AppLayout ({ children }) {
   return (
     <>
       <div>

@@ -1,5 +1,5 @@
-export default function Avatar({src, alt='image', width='120px'}){
-  return(
+export default function Avatar ({ src, alt = 'image', width = '120px' }) {
+  return (
     <>
       <img src={src} alt={alt}/>
       <style jsx>{`
