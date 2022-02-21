@@ -20,7 +20,6 @@ initializeApp(firebaseConfig)
 const auth = getAuth()
 
 const mapUserFromFirebaseAuthToUser = user => {
-  console.log('user', user)
   const { reloadUserInfo } = user
   console.log(reloadUserInfo)
   const { screenName, photoUrl } = reloadUserInfo
@@ -32,8 +31,7 @@ const mapUserFromFirebaseAuthToUser = user => {
 
 export const onAuthStateChangedfun = (onChange) => {
   return onAuthStateChanged(auth, (res) => {
-    console.log('res', res)
-    const normalizedUser = mapUserFromFirebaseAuthToUser(res)
+    const normalizedUser = res ? mapUserFromFirebaseAuthToUser(res) : null
     onChange(normalizedUser)
   })
 }
