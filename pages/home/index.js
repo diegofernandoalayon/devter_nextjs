@@ -1,5 +1,6 @@
 import AppLayout from 'components/AppLayout'
-import Avatar from 'components/Avatar'
+// import Avatar from 'components/Avatar'
+import Devit from 'components/Devit'
 import { useEffect, useState } from 'react'
 export default function HomePage () {
   const [timeline, setTimeLine] = useState([])
@@ -17,18 +18,17 @@ export default function HomePage () {
         </header>
         <section>
           {
-            timeline.map(devit => {
-              return (
-                <article key={devit.id}>
-                  <Avatar src={devit.avatar} alt={devit.username} />
-                  <div>
-                    <strong>{devit.username}</strong>
-                    <p>{devit.message}</p>
+            timeline.map(devit => (
 
-                  </div>
-                </article>
-              )
-            })
+              <Devit
+                key={devit.id}
+                avatar={devit.avatar}
+                username={devit.username}
+                message={devit.message}
+                id={devit.id}
+              />
+            )
+            )
           }
         </section>
         <nav>
@@ -40,16 +40,12 @@ export default function HomePage () {
             align-items: center;
             border-bottom: 1px solid #ccc;
             height: 49px;
-            position: fixed;
+            position: sticky;
             top: 0;
             width: 100%;
             display: flex;
         }
-        article{
-          display: flex;
-         
-          padding:10px 15px;
-        }
+        
         h2 {
           font-size: 21px;
           font-weight: 800;
@@ -58,11 +54,11 @@ export default function HomePage () {
           bottom: 0;
           border-top: 1px solid #ccc;
           height: 49px;
-          position: fixed;
+          position: sticky;
           width: 100%;
         }
-        section {
-          padding-top: 49px;
+        {/* section {
+          padding-top: 49px; */}
         }
         
         `}</style>
