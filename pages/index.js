@@ -8,7 +8,10 @@ import Github from 'components/Icons/Github'
 import { loginWithGithub, onAuthStateChangedfun } from 'firebasee/client'
 // import Avatar from 'components/Avatar'
 import { useRouter } from 'next/router'
-
+const USER_STATES = {
+  NOT_LOGGED: null,
+  NOT_KNOWN: undefined
+}
 export default function Home () {
   const [user, setUser] = useState(undefined)
   const router = useRouter()
@@ -43,14 +46,14 @@ export default function Home () {
           <h2>Talk about development with developers </h2>
           <div>
             {
-              user === null &&
+              user === USER_STATES.NOT_LOGGED &&
                 <Button onClick={handleClick}>
                   <Github fill='white' width={24} height={24}/>
                   Login With Github
                 </Button>
             }
             {
-              user === undefined && <span>Loading ...</span>
+              user === USER_STATES.NOT_KNOWN && <span>Loading ...</span>
             }
 
           </div>
