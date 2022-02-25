@@ -6,7 +6,7 @@ import { colors } from 'styles/theme'
 import Button from 'components/Button'
 import Github from 'components/Icons/Github'
 import { loginWithGithub, onAuthStateChangedfun } from 'firebasee/client'
-import Avatar from 'components/Avatar'
+// import Avatar from 'components/Avatar'
 import { useRouter } from 'next/router'
 
 export default function Home () {
@@ -22,10 +22,6 @@ export default function Home () {
   }, [user])
   const handleClick = () => {
     loginWithGithub()
-      .then(user => {
-        // const { avatar, username } = user
-        setUser(user)
-      })
       .catch(err => {
         console.error(err)
       })
@@ -54,17 +50,7 @@ export default function Home () {
                 </Button>
             }
             {
-              user && user.avatar &&
-                <div>
-                  <Avatar
-                    src={user.avatar}
-                    alt={user.username}
-                    width='100px'
-                    text={user.username}
-                    withText
-                  />
-                  <Button onClick={() => setUser(null)}>Logout</Button>
-                </div>
+              user === undefined && <span>Loading ...</span>
             }
 
           </div>

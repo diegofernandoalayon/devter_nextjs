@@ -39,8 +39,4 @@ export const onAuthStateChangedfun = (onChange) => {
 export const loginWithGithub = () => {
   const githubProvider = new GithubAuthProvider()
   return signInWithPopup(auth, githubProvider)
-    .then(res => {
-      const { user } = res
-      return mapUserFromFirebaseAuthToUser(user)
-    })
 }
