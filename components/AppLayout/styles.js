@@ -7,6 +7,7 @@ export const globlaStyles = css.global`
     background-image: radial-gradient( ${backgroundColor} 2px, transparent 1px), radial-gradient(${backgroundColor} 2px, transparent 1px) ;
     background-position: 0 0, 25px 25px;
     background-size: 50px 50px;
+    overflow: hidden;
   }
   * {
     box-sizing: border-box;
@@ -20,11 +21,12 @@ export default css`
   }
   main {
     background: #fff;
-    box-shadow: 0 10px 25px rgba(0,0,0, .1);
     border-radius: 8px;
-    width: 100%;
+    box-shadow: 0 10px 25px rgba(0,0,0, .1);
     height: 100%;
+    overflow-y: auto;
     position: relative;
+    width: 100%;
   }
   @media(min-width: ${breakpoints.mobile}){
     main {
