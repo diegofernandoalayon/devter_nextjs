@@ -7,14 +7,19 @@ import Button from 'components/Button'
 import Github from 'components/Icons/Github'
 import { loginWithGithub, onAuthStateChangedfun } from 'firebasee/client'
 import Avatar from 'components/Avatar'
+import { useRouter } from 'next/router'
 
 export default function Home () {
   const [user, setUser] = useState(undefined)
+  const router = useRouter()
 
   useEffect(() => {
     onAuthStateChangedfun(setUser)
   }, [])
 
+  useEffect(() => {
+    user && router.replace('/home')
+  }, [user])
   const handleClick = () => {
     loginWithGithub()
       .then(user => {
