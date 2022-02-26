@@ -54,6 +54,7 @@ export default function HomePage () {
           padding-left: 15px;
         }
         nav{
+          background: #ffffff;
           bottom: 0;
           border-top: 1px solid #eee;
           height: 49px;
