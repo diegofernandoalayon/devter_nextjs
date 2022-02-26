@@ -1,10 +1,19 @@
 import AppLayout from 'components/AppLayout'
+import Avatar from 'components/Avatar'
 import Button from 'components/Button'
+import useUser from 'hooks/useUser'
+// import { useState } from 'react'
 
 export default function ComposeDevit () {
+  const user = useUser()
+  // console.log(user)
   return (
     <>
       <AppLayout>
+        {
+          user && <Avatar src={user.avatar} alt={user.username} />
+        }
+
         <form>
           <textarea placeholder='¿Qué esta pasando?'></textarea>
           <div>

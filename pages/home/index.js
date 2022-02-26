@@ -1,9 +1,11 @@
 import AppLayout from 'components/AppLayout'
 // import Avatar from 'components/Avatar'
 import Devit from 'components/Devit'
+import useUser from 'hooks/useUser'
 import { useEffect, useState } from 'react'
 export default function HomePage () {
   const [timeline, setTimeLine] = useState([])
+  useUser()
   useEffect(() => {
     fetch('http://localhost:3000/api/statuses/home_timeline')
       .then(res => res.json())
