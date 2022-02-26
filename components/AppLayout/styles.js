@@ -1,5 +1,5 @@
 import css from 'styled-jsx/css'
-import { colors, breakpoints } from '../../styles/theme'
+import { colors, breakpoints, fonts } from '../../styles/theme'
 import { addOpacityToColor } from '../../styles/utils'
 const backgroundColor = addOpacityToColor(colors.primary, 0.1)
 export const globlaStyles = css.global`
@@ -11,6 +11,9 @@ export const globlaStyles = css.global`
   }
   * {
     box-sizing: border-box;
+  }
+  textarea, input {
+    font-family: ${fonts.base};
   }
 `
 export default css`
