@@ -27,7 +27,7 @@ const timeline = [
       'https://avatars.githubusercontent.com/u/79520423?s=96&v=4',
     username: 'Pedro casas',
     message: 'Twitter web app runs es6+ for modern browsers, reducing the polyfill bundle size by 83%',
-    id: 1
+    id: 4
   },
   {
     avatar:
@@ -35,7 +35,7 @@ const timeline = [
     username: 'Ana maria',
     name: 'el mio',
     message: 'devter, es lo maximo del mundo, funciona de una manera',
-    id: 2
+    id: 5
   },
   {
     avatar:
@@ -43,14 +43,14 @@ const timeline = [
     username: 'Pepito',
     name: 'Diego f',
     message: 'otro mensaje de prueba,para devter, para probar que funciona ',
-    id: 3
+    id: 6
   },
   {
     avatar:
       'https://avatars.githubusercontent.com/u/79520423?s=96&v=4',
     username: 'Pedro casas',
     message: 'Twitter web app runs es6+ for modern browsers, reducing the polyfill bundle size by 83%',
-    id: 1
+    id: 7
   },
   {
     avatar:
@@ -58,7 +58,7 @@ const timeline = [
     username: 'Ana maria',
     name: 'el mio',
     message: 'devter, es lo maximo del mundo, funciona de una manera',
-    id: 2
+    id: 8
   },
   {
     avatar:
@@ -66,14 +66,14 @@ const timeline = [
     username: 'Pepito',
     name: 'Diego f',
     message: 'otro mensaje de prueba,para devter, para probar que funciona ',
-    id: 3
+    id: 9
   },
   {
     avatar:
       'https://avatars.githubusercontent.com/u/79520423?s=96&v=4',
     username: 'Pedro casas',
     message: 'Twitter web app runs es6+ for modern browsers, reducing the polyfill bundle size by 83%',
-    id: 1
+    id: 10
   },
   {
     avatar:
@@ -81,7 +81,7 @@ const timeline = [
     username: 'Ana maria',
     name: 'el mio',
     message: 'devter, es lo maximo del mundo, funciona de una manera',
-    id: 2
+    id: 11
   },
   {
     avatar:
@@ -89,14 +89,14 @@ const timeline = [
     username: 'Pepito',
     name: 'Diego f',
     message: 'otro mensaje de prueba,para devter, para probar que funciona ',
-    id: 3
+    id: 12
   },
   {
     avatar:
       'https://avatars.githubusercontent.com/u/79520423?s=96&v=4',
     username: 'Pedro casas',
     message: 'Twitter web app runs es6+ for modern browsers, reducing the polyfill bundle size by 83%',
-    id: 1
+    id: 13
   },
   {
     avatar:
@@ -104,7 +104,7 @@ const timeline = [
     username: 'Ana maria',
     name: 'el mio',
     message: 'devter, es lo maximo del mundo, funciona de una manera',
-    id: 2
+    id: 14
   },
   {
     avatar:
@@ -112,14 +112,14 @@ const timeline = [
     username: 'Pepito',
     name: 'Diego f',
     message: 'otro mensaje de prueba,para devter, para probar que funciona ',
-    id: 3
+    id: 15
   },
   {
     avatar:
       'https://avatars.githubusercontent.com/u/79520423?s=96&v=4',
     username: 'Pedro casas',
     message: 'Twitter web app runs es6+ for modern browsers, reducing the polyfill bundle size by 83%',
-    id: 1
+    id: 16
   },
   {
     avatar:
@@ -127,7 +127,7 @@ const timeline = [
     username: 'Ana maria',
     name: 'el mio',
     message: 'devter, es lo maximo del mundo, funciona de una manera',
-    id: 2
+    id: 17
   },
   {
     avatar:
@@ -135,7 +135,7 @@ const timeline = [
     username: 'Pepito',
     name: 'Diego f',
     message: 'otro mensaje de prueba,para devter, para probar que funciona ',
-    id: 3
+    id: 18
   }
 ]
 

@@ -5,12 +5,13 @@ import useUser from 'hooks/useUser'
 import { useEffect, useState } from 'react'
 export default function HomePage () {
   const [timeline, setTimeLine] = useState([])
-  useUser()
+  const user = useUser()
+
   useEffect(() => {
-    fetch('http://localhost:3000/api/statuses/home_timeline')
+    user && fetch('http://localhost:3000/api/statuses/home_timeline')
       .then(res => res.json())
       .then(setTimeLine)
-  }, [])
+  }, [user])
   return (
     <>
       <AppLayout>
