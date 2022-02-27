@@ -16,6 +16,7 @@ export default function Button ({ children, disabled, onClick }) {
             padding: 10px 24px;
             curson: pointer;
             transition: opacity: .3s ease;
+            user-select: none;
           }
           button[disabled]{
             pointer-events: none;

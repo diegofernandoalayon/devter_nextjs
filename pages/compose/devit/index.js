@@ -2,11 +2,20 @@ import AppLayout from 'components/AppLayout'
 import Avatar from 'components/Avatar'
 import Button from 'components/Button'
 import useUser from 'hooks/useUser'
-// import { useState } from 'react'
+import { useState } from 'react'
 
 export default function ComposeDevit () {
   const user = useUser()
-  // console.log(user)
+  const [message, setMessage] = useState('')
+
+  const handleChange = (event) => {
+    const { value } = event.target
+    setMessage(value)
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log(message)
+  }
   return (
     <>
       <AppLayout>
@@ -14,10 +23,10 @@ export default function ComposeDevit () {
           user && <Avatar src={user.avatar} alt={user.username} />
         }
 
-        <form>
-          <textarea placeholder='¿Qué esta pasando?'></textarea>
+        <form onSubmit={handleSubmit}>
+          <textarea onChange={handleChange} placeholder='¿Qué esta pasando?' value={message}></textarea>
           <div>
-            <Button>Devitear</Button>
+            <Button disabled={message.length === 0}>Devitear</Button>
           </div>
         </form>
       </AppLayout>
