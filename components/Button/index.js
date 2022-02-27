@@ -17,6 +17,10 @@ export default function Button ({ children, disabled, onClick }) {
             curson: pointer;
             transition: opacity: .3s ease;
           }
+          button[disabled]{
+            pointer-events: none;
+            opacity: 0.2;
+          }
           button > :global(svg){
             margin-right: 8px;
           }
