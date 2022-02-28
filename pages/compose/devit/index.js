@@ -5,7 +5,7 @@ import Button from 'components/Button'
 // hooks
 import useUser from 'hooks/useUser'
 import { useState } from 'react'
-import { addDevit } from 'firebasee/client'
+import { addDevit, fetchLatestDevits } from 'firebasee/client'
 import { useRouter } from 'next/router'
 
 const COMPOSE_STATES = {
@@ -40,6 +40,7 @@ export default function ComposeDevit () {
       console.error(err)
       setStatus(COMPOSE_STATES.ERROR)
     })
+    fetchLatestDevits().then((h) => console.log(h))
   }
 
   const isButtonDisabled = message.length === 0 || status === COMPOSE_STATES.LOADING

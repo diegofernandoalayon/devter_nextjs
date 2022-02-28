@@ -1,6 +1,7 @@
 import AppLayout from 'components/AppLayout'
 // import Avatar from 'components/Avatar'
 import Devit from 'components/Devit'
+import { fetchLatestDevits } from 'firebasee/client'
 import useUser from 'hooks/useUser'
 import { useEffect, useState } from 'react'
 export default function HomePage () {
@@ -8,9 +9,8 @@ export default function HomePage () {
   const user = useUser()
 
   useEffect(() => {
-    user && fetch('http://localhost:3000/api/statuses/home_timeline')
-      .then(res => res.json())
-      .then(setTimeLine)
+    user && fetchLatestDevits()
+      .then((timeline) => setTimeLine(timeline))
   }, [user])
   return (
     <>
@@ -27,7 +27,7 @@ export default function HomePage () {
                 key={devit.id}
                 avatar={devit.avatar}
                 username={devit.username}
-                message={devit.message}
+                message={devit.content}
                 id={devit.id}
               />
             )

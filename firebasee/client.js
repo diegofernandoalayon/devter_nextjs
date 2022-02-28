@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app'
 // import {auth} from 'firebase/app'
 import { getAuth, GithubAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth'
-import { getFirestore, collection, addDoc, Timestamp } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, getDocs, Timestamp } from 'firebase/firestore'
 // import { signInWithPopup } from 'firebase/auth';
 // import { signInWithPhoneNumber } from 'firebase/auth';
 // import auth from 'firebase/auth'
@@ -31,6 +31,19 @@ const mapUserFromFirebaseAuthToUser = user => {
     uid
   }
 }
+
+export const onAuthStateChangedfun = (onChange) => {
+  return onAuthStateChanged(auth, (res) => {
+    const normalizedUser = res ? mapUserFromFirebaseAuthToUser(res) : null
+    onChange(normalizedUser)
+  })
+}
+
+export const loginWithGithub = () => {
+  const githubProvider = new GithubAuthProvider()
+  return signInWithPopup(auth, githubProvider)
+}
+
 export const addDevit = ({ avatar, content, userId, username }) => {
   // console.log('addDevit', userId)
   const docRef = addDoc(collection(db, 'devits'), {
@@ -45,14 +58,16 @@ export const addDevit = ({ avatar, content, userId, username }) => {
   return docRef
 }
 
-export const onAuthStateChangedfun = (onChange) => {
-  return onAuthStateChanged(auth, (res) => {
-    const normalizedUser = res ? mapUserFromFirebaseAuthToUser(res) : null
-    onChange(normalizedUser)
-  })
-}
-
-export const loginWithGithub = () => {
-  const githubProvider = new GithubAuthProvider()
-  return signInWithPopup(auth, githubProvider)
+export const fetchLatestDevits = () => {
+  return getDocs(collection(db, 'devits'))
+    .then((snapshot) => {
+      return snapshot.docs.map(doc => {
+        const data = doc.data()
+        const id = doc.id
+        return {
+          id,
+          ...data
+        }
+      })
+    })
 }
