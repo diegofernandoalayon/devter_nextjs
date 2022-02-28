@@ -3,6 +3,7 @@ import Avatar from 'components/Avatar'
 import Button from 'components/Button'
 import useUser from 'hooks/useUser'
 import { useState } from 'react'
+import { addDevit } from 'firebasee/client'
 
 export default function ComposeDevit () {
   const user = useUser()
@@ -14,7 +15,12 @@ export default function ComposeDevit () {
   }
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(message)
+    addDevit({
+      avatar: user.avatar,
+      content: message,
+      userId: user.uid,
+      username: user.username
+    })
   }
   return (
     <>

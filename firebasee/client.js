@@ -2,6 +2,7 @@
 import { initializeApp } from 'firebase/app'
 // import {auth} from 'firebase/app'
 import { getAuth, GithubAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth'
+import { getFirestore, collection, addDoc, Timestamp } from 'firebase/firestore'
 // import { signInWithPopup } from 'firebase/auth';
 // import { signInWithPhoneNumber } from 'firebase/auth';
 // import auth from 'firebase/auth'
@@ -18,15 +19,30 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig)
 const auth = getAuth()
+const db = getFirestore()
 
 const mapUserFromFirebaseAuthToUser = user => {
-  const { reloadUserInfo } = user
-  console.log(reloadUserInfo)
+  const { reloadUserInfo, uid } = user
+
   const { screenName, photoUrl } = reloadUserInfo
   return {
     avatar: photoUrl,
-    username: screenName
+    username: screenName,
+    uid
   }
+}
+export const addDevit = ({ avatar, content, userId, username }) => {
+  // console.log('addDevit', userId)
+  const docRef = addDoc(collection(db, 'devits'), {
+    avatar,
+    content,
+    userId,
+    username,
+    createdAt: Timestamp.fromDate(new Date()),
+    likesCount: 0,
+    sharedCount: 0
+  })
+  return docRef
 }
 
 export const onAuthStateChangedfun = (onChange) => {
