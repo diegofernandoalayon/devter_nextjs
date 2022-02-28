@@ -9,7 +9,7 @@ export default function Devit ({ avatar, username, content, id, userId, createdA
         <section>
           <header>
             <strong >{username}</strong>
-            {/* <date>{createdAt}</date> */}
+            <date>{createdAt}</date>
           </header>
           <p>{content}</p>
           <p>{userId}</p>
