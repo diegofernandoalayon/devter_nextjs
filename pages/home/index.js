@@ -26,9 +26,11 @@ export default function HomePage () {
               <Devit
                 key={devit.id}
                 avatar={devit.avatar}
+                createdAt={devit.createdAt}
                 username={devit.username}
-                message={devit.content}
+                content={devit.content}
                 id={devit.id}
+                userId={devit.userId}
               />
             )
             )
