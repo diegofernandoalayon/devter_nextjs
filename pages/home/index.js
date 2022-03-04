@@ -9,6 +9,7 @@ import Link from 'next/link'
 import Home from 'components/Icons/Home'
 import Search from 'components/Icons/Search'
 import { colors } from 'styles/theme'
+import Head from 'next/head'
 export default function HomePage () {
   const [timeline, setTimeLine] = useState([])
   const user = useUser()
@@ -20,6 +21,9 @@ export default function HomePage () {
   return (
     <>
       <AppLayout>
+        <Head>
+          <title>Inicio / Devter</title>
+        </Head>
         <header>
           {/* <Avatar /> */}
           <h2>Inicio</h2>
