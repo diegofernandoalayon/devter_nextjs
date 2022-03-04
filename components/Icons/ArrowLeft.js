@@ -4,7 +4,6 @@ export default function SvgComponent (props) {
       <g
         fill="none"
         fillRule="evenodd"
-        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
       >

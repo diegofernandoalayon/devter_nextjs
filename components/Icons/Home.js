@@ -1,4 +1,4 @@
-export default function SvgComponent (props) {
+export default function Home (props) {
   return (
     <svg height={21} width={21} xmlns="http://www.w3.org/2000/svg" {...props}>
       <g
@@ -7,8 +7,7 @@ export default function SvgComponent (props) {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <circle cx={8.5} cy={8.5} r={5} />
-        <path d="M17.571 17.5 12 12" />
+        <path d="m1.5 10.5 9-9 9 9M3.5 11.5v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4" />
       </g>
     </svg>
   )

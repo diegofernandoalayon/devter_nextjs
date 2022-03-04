@@ -40,7 +40,7 @@ export default function ComposeDevit () {
       console.error(err)
       setStatus(COMPOSE_STATES.ERROR)
     })
-    fetchLatestDevits().then((h) => console.log(h))
+    fetchLatestDevits()
   }
 
   const isButtonDisabled = message.length === 0 || status === COMPOSE_STATES.LOADING
