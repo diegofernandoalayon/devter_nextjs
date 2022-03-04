@@ -24,7 +24,7 @@ export default function useTimeAgo (timestamp) {
     const interval = setInterval(() => {
       const newTimeAgo = getDateDiffs(timestamp)
       setTimeago(newTimeAgo)
-    }, 1000)
+    }, 5000)
     return () => clearInterval(interval)
   }, [timestamp])
   const rtf = new Intl.RelativeTimeFormat('es', { style: 'short' }) // para usar la forma de formatear propia de la plataforma

@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app'
 // import {auth} from 'firebase/app'
 import { getAuth, GithubAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth'
-import { getFirestore, collection, addDoc, getDocs, Timestamp } from 'firebase/firestore'
+import { query, getFirestore, collection, addDoc, getDocs, Timestamp, orderBy } from 'firebase/firestore'
 // import { signInWithPopup } from 'firebase/auth';
 // import { signInWithPhoneNumber } from 'firebase/auth';
 // import auth from 'firebase/auth'
@@ -59,7 +59,9 @@ export const addDevit = ({ avatar, content, userId, username }) => {
 }
 
 export const fetchLatestDevits = () => {
-  return getDocs(collection(db, 'devits'))
+  const q = query(collection(db, 'devits'), orderBy('createdAt', 'desc'))
+
+  return getDocs(q)
     .then((snapshot) => {
       return snapshot.docs.map(doc => {
         const data = doc.data()
