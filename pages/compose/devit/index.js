@@ -95,34 +95,36 @@ export default function ComposeDevit () {
     <>
       <AppLayout>
         <section>
-          <div>
+          <div className='avatar-container'>
             {
               user && <Avatar src={user.avatar} alt={user.username} />
             }
           </div>
-          <form onSubmit={handleSubmit}>
-            <textarea
-              onChange={handleChange}
-              onDragEnter={handleDragEnter}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-              placeholder='¿Qué esta pasando?'
-              value={message}
-              ></textarea>
-              {
-                imgURL && (
+          <div className='form-container'>
+            <form onSubmit={handleSubmit}>
+              <textarea
+                onChange={handleChange}
+                onDragEnter={handleDragEnter}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+                placeholder='¿Qué esta pasando?'
+                value={message}
+                ></textarea>
+                {
+                  imgURL && (
 
-                  <footer>
-                    <img src={imgURL} alt="queso" />
-                    <button onClick={() => setImgURL(null)}>X</button>
-                  </footer>
-                )
-              }
+                    <footer>
+                      <img src={imgURL} alt="queso" />
+                      <button onClick={() => setImgURL(null)}>X</button>
+                    </footer>
+                  )
+                }
 
-            <div>
-              <Button disabled={isButtonDisabled}>Devitear</Button>
-            </div>
-          </form>
+              <div>
+                <Button disabled={isButtonDisabled}>Devitear</Button>
+              </div>
+            </form>
+          </div>
         </section>
       </AppLayout>
       <style jsx>{`
@@ -144,6 +146,12 @@ export default function ComposeDevit () {
         }
         div{
           padding: 15px;
+        }
+        .avatar-container{
+          padding: 4px 0 0 4px;
+        }
+        .form-container{
+          flex: auto;
         }
         form{
 
