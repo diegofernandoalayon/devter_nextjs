@@ -4,8 +4,8 @@ import Avatar from 'components/Avatar'
 import Button from 'components/Button'
 // hooks
 import useUser from 'hooks/useUser'
-import { useState } from 'react'
-import { addDevit, fetchLatestDevits } from 'firebasee/client'
+import { useState, useEffect } from 'react'
+import { addDevit, fetchLatestDevits, uploadImage } from 'firebasee/client'
 import { useRouter } from 'next/router'
 
 const COMPOSE_STATES = {
@@ -15,12 +15,35 @@ const COMPOSE_STATES = {
   ERROR: -1
 
 }
+const DRAG_IMAGE_STATES = {
+  ERROR: -1,
+  NONE: 0,
+  DRAG_OVER: 1,
+  UPLOADING: 2,
+  COMPLETE: 3
+}
 
 export default function ComposeDevit () {
-  const user = useUser()
-  const [status, setStatus] = useState(COMPOSE_STATES.USER_NOT_KNOWN)
   const [message, setMessage] = useState('')
+  const [status, setStatus] = useState(COMPOSE_STATES.USER_NOT_KNOWN)
+  const [drag, setDrag] = useState(DRAG_IMAGE_STATES.NONE)
+  const [task, setTask] = useState(null)
+  // const [imgURL, setImgURL] = useState(null)
+
   const router = useRouter()
+  const user = useUser()
+
+  useEffect(() => {
+    console.log(task)
+    if (task) {
+      const onProgress = () => {}
+      const onError = () => {}
+      const onComplete = () => {
+        console.log('oncomplete')
+      }
+      task.on('state_changed', onProgress, onError, onComplete)
+    }
+  }, [task])
 
   const handleChange = (event) => {
     const { value } = event.target
@@ -43,28 +66,62 @@ export default function ComposeDevit () {
     fetchLatestDevits()
   }
 
+  const handleDragEnter = event => {
+    event.preventDefault()
+    setDrag(DRAG_IMAGE_STATES.DRAG_OVER)
+  }
+  const handleDragLeave = event => {
+    event.preventDefault()
+    setDrag(DRAG_IMAGE_STATES.NONE)
+  }
+  const handleDrop = event => {
+    event.preventDefault()
+    // console.log(event)
+    // console.log(event.dataTransfer.files[0])
+    setDrag(DRAG_IMAGE_STATES.NONE)
+    const file = event.dataTransfer.files[0]
+    const task = uploadImage(file)
+    console.log(task)
+    setTask(task)
+  }
+
   const isButtonDisabled = message.length === 0 || status === COMPOSE_STATES.LOADING
 
   return (
     <>
       <AppLayout>
-        {
-          user && <Avatar src={user.avatar} alt={user.username} />
-        }
-
-        <form onSubmit={handleSubmit}>
-          <textarea onChange={handleChange} placeholder='¿Qué esta pasando?' value={message}></textarea>
+        <section>
           <div>
-            <Button disabled={isButtonDisabled}>Devitear</Button>
+            {
+              user && <Avatar src={user.avatar} alt={user.username} />
+            }
           </div>
-        </form>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              onChange={handleChange}
+              onDragEnter={handleDragEnter}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              placeholder='¿Qué esta pasando?'
+              value={message}
+              ></textarea>
+            <div>
+              <Button disabled={isButtonDisabled}>Devitear</Button>
+            </div>
+          </form>
+        </section>
       </AppLayout>
       <style jsx>{`
         div{
           padding: 15px;
         }
+        form{
+
+        }
         textarea{
-          border: 0;
+          border: ${drag === DRAG_IMAGE_STATES.DRAG_OVER ? '3px dashed #09f' : '3px solid transparent'};
+          border-radius: 10px;
+
           font-size: 21px;
           padding: 15px;
           outline: 0;
@@ -72,6 +129,11 @@ export default function ComposeDevit () {
           resize: none;
           width: 100%;
         }
+        section{
+          display: flex;
+          align-items: flex-start;
+        }
+        
       `}</style>
     </>
   )

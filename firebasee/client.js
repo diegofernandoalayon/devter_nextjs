@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app'
 // import {auth} from 'firebase/app'
 import { getAuth, GithubAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth'
 import { query, getFirestore, collection, addDoc, getDocs, Timestamp, orderBy } from 'firebase/firestore'
-import { getStorage, ref, uploadBytes } from 'firebase/storage'
+import { getStorage, ref, uploadBytesResumable } from 'firebase/storage'
 // import { signInWithPopup } from 'firebase/auth';
 // import { signInWithPhoneNumber } from 'firebase/auth';
 // import auth from 'firebase/auth'
@@ -81,6 +81,6 @@ export const fetchLatestDevits = () => {
 
 export const uploadImage = (file) => {
   const imagesRef = ref(storage, `images/${file.name}`)
-  const task = uploadBytes(imagesRef.bucket, file)
+  const task = uploadBytesResumable(imagesRef, file)
   return task
 }
