@@ -5,7 +5,7 @@ import Button from 'components/Button'
 // hooks
 import useUser from 'hooks/useUser'
 import { useState, useEffect } from 'react'
-import { addDevit, fetchLatestDevits, uploadImage } from 'firebasee/client'
+import { addDevit, fetchLatestDevits, getURL, uploadImage } from 'firebasee/client'
 import { useRouter } from 'next/router'
 
 const COMPOSE_STATES = {
@@ -28,18 +28,21 @@ export default function ComposeDevit () {
   const [status, setStatus] = useState(COMPOSE_STATES.USER_NOT_KNOWN)
   const [drag, setDrag] = useState(DRAG_IMAGE_STATES.NONE)
   const [task, setTask] = useState(null)
-  // const [imgURL, setImgURL] = useState(null)
+  const [imgURL, setImgURL] = useState(null)
 
   const router = useRouter()
   const user = useUser()
 
   useEffect(() => {
-    console.log(task)
     if (task) {
       const onProgress = () => {}
       const onError = () => {}
       const onComplete = () => {
         console.log('oncomplete')
+        getURL(task)
+          .then((downloadURL) => {
+            setImgURL(downloadURL)
+          })
       }
       task.on('state_changed', onProgress, onError, onComplete)
     }
@@ -105,6 +108,10 @@ export default function ComposeDevit () {
               placeholder='¿Qué esta pasando?'
               value={message}
               ></textarea>
+              {
+                imgURL && <img src={imgURL} alt="queso" />
+              }
+
             <div>
               <Button disabled={isButtonDisabled}>Devitear</Button>
             </div>
