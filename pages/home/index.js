@@ -40,6 +40,7 @@ export default function HomePage () {
                 content={devit.content}
                 id={devit.id}
                 userId={devit.userId}
+                img={devit.img}
               />
             )
             )

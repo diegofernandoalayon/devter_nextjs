@@ -59,7 +59,8 @@ export default function ComposeDevit () {
       avatar: user.avatar,
       content: message,
       userId: user.uid,
-      username: user.username
+      username: user.username,
+      img: imgURL
     }).then(() => {
       router.push('/home')
     }).catch(err => {
@@ -109,7 +110,13 @@ export default function ComposeDevit () {
               value={message}
               ></textarea>
               {
-                imgURL && <img src={imgURL} alt="queso" />
+                imgURL && (
+
+                  <footer>
+                    <img src={imgURL} alt="queso" />
+                    <button onClick={() => setImgURL(null)}>X</button>
+                  </footer>
+                )
               }
 
             <div>
@@ -119,6 +126,22 @@ export default function ComposeDevit () {
         </section>
       </AppLayout>
       <style jsx>{`
+        footer{
+          position: relative;
+        }
+        button{
+          background: rgba(0,0,0,0.8);
+          font-size:18px;
+          color: white;
+          border-radius: 100%;
+          border: 0;
+          cursor: pointer;
+          height: 30px;
+          position: absolute;
+          right: 15px;
+          top: 15px;
+          width: 30px; 
+        }
         div{
           padding: 15px;
         }
@@ -140,7 +163,11 @@ export default function ComposeDevit () {
           display: flex;
           align-items: flex-start;
         }
-        
+        img{
+          border-radius: 10px;
+          height: auto;
+          width: 100%;
+        }
       `}</style>
     </>
   )

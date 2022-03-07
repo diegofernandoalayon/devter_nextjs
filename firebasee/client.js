@@ -46,7 +46,7 @@ export const loginWithGithub = () => {
   return signInWithPopup(auth, githubProvider)
 }
 
-export const addDevit = ({ avatar, content, userId, username }) => {
+export const addDevit = ({ avatar, content, userId, username, img }) => {
   // console.log('addDevit', userId)
   const docRef = addDoc(collection(db, 'devits'), {
     avatar,
@@ -55,7 +55,8 @@ export const addDevit = ({ avatar, content, userId, username }) => {
     username,
     createdAt: Timestamp.fromDate(new Date()),
     likesCount: 0,
-    sharedCount: 0
+    sharedCount: 0,
+    img
   })
   return docRef
 }
