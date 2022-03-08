@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
 import styles from 'styles/Home.module.css'
-import AppLayout from 'components/AppLayout'
 import { colors } from 'styles/theme'
 import Button from 'components/Button'
 import Github from 'components/Icons/Github'
@@ -31,7 +30,6 @@ export default function Home () {
         <link rel="icon" href="/favicon_bird.ico" />
       </Head>
 
-      <AppLayout >
         <section>
           <img src='/devter_logo.png' alt='logo' />
           <h1 className={styles.title}>
@@ -52,7 +50,7 @@ export default function Home () {
 
           </div>
         </section>
-      </AppLayout>
+
       <style jsx>{`
           img{
             width: 120px;

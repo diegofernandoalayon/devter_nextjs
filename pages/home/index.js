@@ -1,5 +1,4 @@
-import AppLayout from 'components/AppLayout'
-// import Avatar from 'components/Avatar'
+
 import Devit from 'components/Devit'
 import Create from 'components/Icons/Create'
 import { fetchLatestDevits } from 'firebasee/client'
@@ -20,7 +19,7 @@ export default function HomePage () {
   }, [user])
   return (
     <>
-      <AppLayout>
+
         <Head>
           <title>Inicio / Devter</title>
         </Head>
@@ -64,7 +63,7 @@ export default function HomePage () {
           </Link>
 
         </nav>
-      </AppLayout>
+
       <style jsx>{`
         header{
             align-items: center;

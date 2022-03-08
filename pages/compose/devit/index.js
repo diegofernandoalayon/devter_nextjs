@@ -1,5 +1,4 @@
 // components
-import AppLayout from 'components/AppLayout'
 import Avatar from 'components/Avatar'
 import Button from 'components/Button'
 // hooks
@@ -93,7 +92,7 @@ export default function ComposeDevit () {
 
   return (
     <>
-      <AppLayout>
+
         <section>
           <div className='avatar-container'>
             {
@@ -126,7 +125,7 @@ export default function ComposeDevit () {
             </form>
           </div>
         </section>
-      </AppLayout>
+
       <style jsx>{`
         footer{
           position: relative;
