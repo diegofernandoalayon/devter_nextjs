@@ -13,8 +13,8 @@ export default function Devit ({ avatar, username, content, id, userId, createdA
         <section>
           <header>
             <strong >{username}</strong>
-            <span> . </span>
-            <time dateTime={createdAtFormated}>{timeago}</time>
+            <span> ~ </span>
+            <time title={createdAtFormated}>{timeago}</time>
           </header>
           <p>{content}</p>
           {
@@ -43,7 +43,7 @@ export default function Devit ({ avatar, username, content, id, userId, createdA
           margin-top: 10px;
 
         }
-        date {
+        time {
           color: #555;
           font-size: 14px;
         }
