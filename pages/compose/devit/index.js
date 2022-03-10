@@ -102,6 +102,7 @@ export default function ComposeDevit () {
           <div className='form-container'>
             <form onSubmit={handleSubmit}>
               <textarea
+                autoFocus
                 onChange={handleChange}
                 onDragEnter={handleDragEnter}
                 onDragLeave={handleDragLeave}
