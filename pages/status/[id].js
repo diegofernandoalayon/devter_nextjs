@@ -13,10 +13,13 @@ export default function DevitPage (props) {
   )
 }
 DevitPage.getInitialProps = (context) => {
-  const { query } = context
+  const { query, res } = context
   const { id } = query
   return fetch(`http://localhost:3000/api/devits/${id}`)
     .then(apiResponse => {
       if (apiResponse.ok) return apiResponse.json()
+      if (res) {
+        res.writeHead(301, { location: '/home' }).end()
+      }
     })
 }
