@@ -11,6 +11,7 @@ export default function Devit ({ avatar, username, content, id, userId, createdA
     event.preventDefault()
     router.push(`/status/${id}`)
   }
+
   return (
     <>
       <article onClick={handleArticleClick}>

@@ -9,9 +9,14 @@ export default (req, res) => {
     .get()
     .then(doc => {
       const data = doc.data()
-      console.log(data)
+      const id = doc.id
+      const { createdAt } = data
       if (data) {
-        res.json(data)
+        res.json({
+          ...data,
+          id,
+          createdAt: +createdAt.toDate()
+        })
       }
       res.satus(400).end()
     }).catch(() => {
