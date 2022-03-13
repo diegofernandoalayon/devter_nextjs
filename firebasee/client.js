@@ -60,6 +60,17 @@ export const addDevit = ({ avatar, content, userId, username, img }) => {
   })
   return docRef
 }
+const mapDevitFromFirebaseToDevitObject = doc => {
+  const data = doc.data()
+  const id = doc.id
+  const { createdAt } = data
+
+  return {
+    ...data,
+    id,
+    createdAt: +createdAt.toDate()
+  }
+}
 
 export const fetchLatestDevits = () => {
   const q = query(collection(db, 'devits'), orderBy('createdAt', 'desc'))
@@ -67,15 +78,7 @@ export const fetchLatestDevits = () => {
   return getDocs(q)
     .then((snapshot) => {
       return snapshot.docs.map(doc => {
-        const data = doc.data()
-        const id = doc.id
-        const { createdAt } = data
-
-        return {
-          ...data,
-          id,
-          createdAt: +createdAt.toDate()
-        }
+        return mapDevitFromFirebaseToDevitObject(doc)
       })
     })
 }
