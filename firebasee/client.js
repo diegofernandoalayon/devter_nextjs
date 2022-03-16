@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app'
 // import {auth} from 'firebase/app'
 import { getAuth, GithubAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth'
-import { query, getFirestore, collection, addDoc, getDocs, Timestamp, orderBy, onSnapshot } from 'firebase/firestore'
+import { query, getFirestore, collection, addDoc, getDocs, Timestamp, orderBy, onSnapshot, limit } from 'firebase/firestore'
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
 // import { signInWithPopup } from 'firebase/auth';
 // import { signInWithPhoneNumber } from 'firebase/auth';
@@ -72,7 +72,7 @@ const mapDevitFromFirebaseToDevitObject = doc => {
   }
 }
 export const listenLatesDevits = (callback) => {
-  const q = query(collection(db, 'devits'), orderBy('createdAt', 'desc'))
+  const q = query(collection(db, 'devits'), orderBy('createdAt', 'desc'), limit(20))
   return onSnapshot(q, (snapshot) => {
     const { docs } = snapshot
     const newDevits = docs.map(mapDevitFromFirebaseToDevitObject)
