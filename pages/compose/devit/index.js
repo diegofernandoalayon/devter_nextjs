@@ -4,7 +4,7 @@ import Button from 'components/Button'
 // hooks
 import useUser from 'hooks/useUser'
 import { useState, useEffect } from 'react'
-import { addDevit, fetchLatestDevits, getURL, uploadImage } from 'firebasee/client'
+import { addDevit, getURL, uploadImage } from 'firebasee/client'
 import { useRouter } from 'next/router'
 
 const COMPOSE_STATES = {
@@ -66,7 +66,7 @@ export default function ComposeDevit () {
       console.error(err)
       setStatus(COMPOSE_STATES.ERROR)
     })
-    fetchLatestDevits()
+    // fetchLatestDevits()
   }
 
   const handleDragEnter = event => {

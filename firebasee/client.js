@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app'
 // import {auth} from 'firebase/app'
 import { getAuth, GithubAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth'
-import { query, getFirestore, collection, addDoc, getDocs, Timestamp, orderBy, onSnapshot, limit } from 'firebase/firestore'
+import { query, getFirestore, collection, addDoc, Timestamp, orderBy, onSnapshot, limit } from 'firebase/firestore'
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
 // import { signInWithPopup } from 'firebase/auth';
 // import { signInWithPhoneNumber } from 'firebase/auth';
@@ -79,16 +79,16 @@ export const listenLatesDevits = (callback) => {
     callback(newDevits)
   })
 }
-export const fetchLatestDevits = () => {
-  const q = query(collection(db, 'devits'), orderBy('createdAt', 'desc'))
+// export const fetchLatestDevits = () => {
+//   const q = query(collection(db, 'devits'), orderBy('createdAt', 'desc'))
 
-  return getDocs(q)
-    .then((snapshot) => {
-      return snapshot.docs.map(doc => {
-        return mapDevitFromFirebaseToDevitObject(doc)
-      })
-    })
-}
+//   return getDocs(q)
+//     .then((snapshot) => {
+//       return snapshot.docs.map(doc => {
+//         return mapDevitFromFirebaseToDevitObject(doc)
+//       })
+//     })
+// }
 
 export const uploadImage = (file) => {
   const imagesRef = ref(storage, `images/${file.name}`)
