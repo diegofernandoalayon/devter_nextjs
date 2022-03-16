@@ -14,11 +14,13 @@ export default function HomePage () {
   const user = useUser()
 
   useEffect(() => {
+    let unsubscribe
     if (user) {
-      listenLatesDevits((newDevits) => {
+      unsubscribe = listenLatesDevits((newDevits) => {
         setTimeLine(newDevits)
       })
     }
+    return () => unsubscribe && unsubscribe()
     // user && listenLatesDevits()
     //   .then((timeline) => setTimeLine(timeline))
   }, [user])
