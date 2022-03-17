@@ -5,8 +5,9 @@ const LANGUAGES = {
 const isDateTimeFormatSupported =
   typeof Intl !== 'undefined' && Intl.DateTimeFormat
 
-export const formatDate = (timestamp, { language = LANGUAGES.DEFAULT_LANGUAGE }) => {
+export const formatDate = (timestamp, { language = LANGUAGES.DEFAULT_LANGUAGE } = {}) => {
   const date = new Date(timestamp)
+
   if (!isDateTimeFormatSupported) {
     const options = {
       weekday: 'short',
