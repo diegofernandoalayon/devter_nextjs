@@ -5,7 +5,6 @@ export default function DevitPage (props) {
   // console.log(props.id)
   const router = useRouter()
   const { id } = router.query
-  console.log(props)
   return (
     <>
       <Devit {...props} />
